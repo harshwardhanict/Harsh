@@ -50,13 +50,23 @@ print(l)
 l1 = [i for i in l if x%i==0]
 print(l1)
 '''
-
-l=(2, (4, 6), 8, 10,10, 14,(), 14,(2,12),(2,12),(14),(34,7,5))
-count={}
-for i in l:
-    if i not in count:
-        count[i]=1
+'''
+def sum(n):
+    if n == 0:
+        return n
     else:
-        count[i]+=1
-l=[i for i,j in count.items() if j>1]
-print(l)
+      return n + sum(n-1)
+
+print(sum(4))
+'''
+'''
+l=list(range(1,int(input('number :'))))
+print(type(l))
+
+def sum_list(a):
+    if len(a) < 1:
+        return 0
+    else:
+     return a[0] + sum_list(a[1:])
+
+print(sum_list(l))'''

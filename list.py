@@ -149,4 +149,14 @@ print(l1)'''
 l=[3, 4, 6, 28, 69, 71, 65, 93, 120,17,9, 7, 1, 0, 0 ]
 x = sorted(set(l))
 print(x)
-'''
+
+l=(2, (4, 6), 8, 10,10, 14,(), 14,(2,12),(2,12),(14),(34,7,5))
+count={}
+for i in l:
+    if i not in count:
+        count[i]=1
+    else:
+        count[i]+=1
+print(count)
+l=[i for i,j in count.items() if j>1]
+print(l)'''
