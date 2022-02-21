@@ -39,6 +39,13 @@ print(x)
 # p=list(l1[0][1])
 # l2=[i for i in p if i>l[0][0]]
 # print(l2)
+#
+
+y={'o': 20, 'a': 50, 'f': 10, 'e': 23}
+# print(max(y.items(),key=lambda x:x[1]))
+# print(min(y.items(), key=lambda x: x[1]))
 
 
-)
+# d1 = {1:'a' , 2:'b', 3:'c' , 4:'e' }
+# print(filter(lambda x:x%2==0,d1))
+# print(sorted(d1,key=))
