@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="avish_wizard_form">
+            <field name="name">avish_wizard form</field>
+            <field name="model">avish.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                      <field name="name" placeholder="Name"/>
+                      <field name="PhoneNo"/>
+                      <field name="Price"/>
+                      <field name="Email" widget="email"/>
+                    </group>
+                    <group>
+                         <footer>
+                           <button name="Print" string="Print" type="object" class="btn-primary" data-hotkey="q"/>
+                           <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                         </footer>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="avish_wizard_action_window">
+            <field name="name">Print</field>
+<!--            <field name="name">avish_wizard window</field>-->
+            <field name="res_model">avish.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="avish_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
