@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Harshwardhan",
+    'name': "Library",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -26,12 +26,11 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'wizard/views_wizard.xml'
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
-    ],
-    "license": "LGPL-3",
+    ] ,'license':'LGPL-3'
+    ,'application':True
 }

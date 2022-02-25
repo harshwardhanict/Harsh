@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Harshwardhan",
+    'name': "007",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,18 +20,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','station'],
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
-        'views/views.xml',
-        'wizard/views_wizard.xml'
-        'views/templates.xml',
+        'security_007/ir.model.access.csv',
+        'views_007/views.xml',
+        'views_007/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
     "license": "LGPL-3",
+    "application":True
 }

@@ -1,0 +1,87 @@
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="007_list">
+            <field name="name">007 list</field>
+            <field name="model">station.info</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="Price"/>
+                    <field name="Ticket"/>
+                    <field name="Station"/>
+                    <field name="States"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="007_form">
+            <field name="name">007 form</field>
+            <field name="model">station.info</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" Placeholder='Name'/>
+                        <field name="Price" Placeholder='In RS/-'/>
+                        <field name="Ticket" widget="Ticket"/>
+                    </group>
+                    <group>
+                        <field name="Station"/>
+                        <field name="States" widget="many2many_tags"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+<!--         <record model="ir.ui.view" id="view_007_form">-->
+<!--            <field name="name">007 form</field>-->
+<!--            <field name="model">station.info</field>-->
+<!--             <field name="inherit_id" ref="007_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <group>-->
+<!--                        <field name="age"/>-->
+<!--                        <field name="city"/>-->
+<!--                    </group>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="007_action_window">
+            <field name="name">007 window</field>
+            <field name="res_model">station.info</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- server action to the one above -->
+
+<!--        <record model="ir.actions.server" id="007.action_server">-->
+<!--            <field name="name">007 server</field>-->
+<!--            <field name="model_id" ref="model_007_007"/>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--                action = {-->
+<!--                "type": "ir.actions.act_window",-->
+<!--                "view_mode": "tree,form",-->
+<!--                "res_model": model._name,-->
+<!--                }-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+        <!-- Top menu item -->
+        <menuitem name="007" id="007_menu_root"/>
+        <!-- menu categories -->
+        <menuitem name="Menu 1" id="007_menu_1" parent="007_menu_root"/>
+        <menuitem name="Menu 2" id="007_menu_2" parent="007_menu_root"/>
+        <!-- actions -->
+        <menuitem name="List" id="007_menu_1_list" parent="007_menu_1"
+                  action="007_action_window"/>
+<!--        <menuitem name="Server to list" id="007" parent="007.menu_2"-->
+<!--                  action="007.action_server"/>-->
+    </data>
+</odoo>
