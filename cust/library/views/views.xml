@@ -11,52 +11,72 @@
                     <field name="value"/>
                     <field name="image" widget="image"/>
                     <field name="stat"/>
+                    <field name="star"/>
+                    <field name="gender"/>
+                    <field name="books"/>
                 </tree>
             </field>
         </record>
 
-         <record id="view_res_company_kanban" model="ir.ui.view">
-            <field name="name">custom1.custom1.kanban</field>
-            <field name="model">custom1.custom1</field>
+
+        <record id="library_search" model="ir.ui.view">
+            <field name="name">library search</field>
+            <field name="model">library.library</field>
+            <field name="arch" type="xml">
+                <search string="Record">
+                    <field name="name"/>
+                    <field name="gender"/>
+                    <separator/>
+                    <filter string="Name" name="name" domain="[('name','=','kakashi hatake')]"/>
+                    <filter string="Male" name="Male" domain="[('gender','=','Male')]"/>
+                    <group expand='1' string='Group by'>
+                        <filter string='Name' name="name" context="{'group_by' : 'name'}"/>
+                        <filter string='Gender' name="group_gender" context="{'group_by' : 'gender'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_res_company_kanban" model="ir.ui.view">
+            <field name="name">library.library.kanban</field>
+            <field name="model">library.library</field>
             <field name="arch" type="xml">
                 <kanban>
                     <field name="name" widget='email' placeholder='email'/>
-
+                    <field name="value"/>
+                    <field name="image" widget="image"/>
+                    <field name="stat"/>
+                    <field name="star" widget="priority"/>
+                    <field name="gender" widget="radio"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
                                 <div class="oe_kanban_details">
                                     <ul>
                                         <li>
-                                            fname:
-                                            <field name="fname" placeholder='fname'/>
+                                            Name:
+                                            <field name="name" placeholder='name'/>
                                         </li>
                                         <li>
-                                            lname:
-                                            <field name="lname" placeholder='lname'/>
+                                            Value:
+                                            <field name="value" placeholder='value'/>
                                         </li>
                                         <li>
-                                            mobile:
-                                            <field name="mobile"/>
+                                            <field name="image" widget="image"/>
                                         </li>
                                         <li>
-                                            addres:
-                                            <field name="address"/>
+                                            <field name="gender" widget="radio"/>
                                         </li>
                                         <li>
-                                            city:
-                                            <field name="city"/>
+                                            Power Level:
+                                            <field name="star" widget="priority"/>
                                         </li>
                                         <li>
-                                            image:
-                                            <field name='image' widget='image'/>
+                                            <field name="books"/>
                                         </li>
-
                                     </ul>
                                 </div>
-
                             </div>
-
                         </t>
                     </templates>
                 </kanban>
@@ -71,13 +91,52 @@
                     <header>
                         <field name="stat" widget="statusbar" options="{'clickable':'2'}"
                                statusbar_visible="application,confirm"/>
+
                     </header>
                     <sheet>
                         <group>
                             <field name="name"/>
                             <field name="value"/>
+                            <field name="image" widget="image"/>
+                            <field name="star" widget="priority"/>
+                            <field name="gender" widget="radio"/>
                         </group>
+                        <notebook>
+                            <page string="Books Details">
+                                <field name="books">
+                                    <tree editable="bottom">
+                                        <field name="books_name"/>
+                                        <field name="quantity"/>
+                                        <field name="Mrp"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Address Details">
+                                <field name="address">
+                                    <tree editable="bottom">
+                                        <field name="Address"/>
+                                        <field name="locality"/>
+                                        <field name="street"/>
+                                        <field name="pin_code"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Payment Details">
+                                <field name="payment">
+                                    <tree editable="bottom">
+                                        <field name="card"/>
+                                        <field name="name_of_card_holder"/>
+                                        <field name="cvv"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
+                    <div class='oe_chatter'>
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -87,26 +146,11 @@
         <record model="ir.actions.act_window" id="library_action_window">
             <field name="name">Library window</field>
             <field name="res_model">library.library</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{'search_default_group_gender':1}</field>
         </record>
 
 
-        <!-- server action to the one above -->
-
-        <record model="ir.actions.server" id="library_action_server">
-            <field name="name">Library server</field>
-            <field name="model_id" ref="model_library_library"/>
-            <field name="state">code</field>
-            <field name="code">
-                action = {
-                "type": "ir.actions.act_window",
-                "view_mode": "tree,form",
-                "res_model": model._name,
-                }
-            </field>
-        </record>
-
-        <!-- Top menu item -->
 
         <menuitem name="Library" id="library_menu_root"/>
 
@@ -119,8 +163,8 @@
 
         <menuitem name="List" id="library_menu_1_list" parent="library_menu_1"
                   action="library_action_window"/>
-        <menuitem name="Server to list" id="library" parent="library_menu_2"
-                  action="library_action_server"/>
+        <!--        <menuitem name="Server to list" id="library" parent="library_menu_2"-->
+        <!--                  action="library_action_server"/>-->
 
     </data>
 </odoo>
