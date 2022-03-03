@@ -65,7 +65,7 @@
                                             <field name="image" widget="image"/>
                                         </li>
                                         <li>
-                                            <field name="gender" widget="radio"/>
+                                            <field name="gender" widget="radio" options="{'horizontal':1}"/>
                                         </li>
                                         <li>
                                             Power Level:
@@ -99,7 +99,7 @@
                             <field name="value"/>
                             <field name="image" widget="image"/>
                             <field name="star" widget="priority"/>
-                            <field name="gender" widget="radio"/>
+                            <field name="gender" widget="radio" options="{'horizontal':1}"/>
                         </group>
                         <notebook>
                             <page string="Books Details">
@@ -156,12 +156,11 @@
 
         <!-- menu categories -->
 
-        <menuitem name="Menu 1" id="library_menu_1" parent="library_menu_root"/>
-        <menuitem name="Menu 2" id="library_menu_2" parent="library_menu_root"/>
+        <menuitem name="Don't Click" id="library_menu_1" parent="library_menu_root"/>
 
         <!-- actions -->
 
-        <menuitem name="List" id="library_menu_1_list" parent="library_menu_1"
+        <menuitem name="Don't Click" id="library_menu_1_list" parent="library_menu_1"
                   action="library_action_window"/>
         <!--        <menuitem name="Server to list" id="library" parent="library_menu_2"-->
         <!--                  action="library_action_server"/>-->

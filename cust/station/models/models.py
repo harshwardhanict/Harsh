@@ -18,7 +18,6 @@ class station(models.Model):
 
 
 
-
 class station_second(models.Model):
     _name = 'station.sec'
     _description = 'station.sec'
