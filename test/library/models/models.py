@@ -8,12 +8,6 @@ class library(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'library.library'
 
-
-    '''
-    Q2) On update of field values in the Form view it should reflect on Chatter ?
-           
-           by adding tracking = True i am able to reflect the update fields on chatter.
-                        '''
     name = fields.Char(string='Name', tracking=True)
     value = fields.Integer(string='Value', tracking=True)
     image = fields.Binary(string='Image')
@@ -26,13 +20,6 @@ class library(models.Model):
     star = fields.Selection(
         [('0', 'Bad'), ('1', 'Average'), ('2', 'Good'), ('3', 'Excellent'), ('4', 'Insane'), ('5', 'Master')])
     gender = fields.Selection([('Male', 'Male'), ('Female', 'Female')], string='Gender')
-
-    def name_get(self):
-        result = []
-        for rec in self:
-            result.append((rec.id, '%s - %s' % (rec.name, rec.value)))
-            print(result)
-        return result
 
 
 class librarybooks(models.Model):

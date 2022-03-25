@@ -20,17 +20,21 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'rentaltype','mail','sale'],
+    'depends': ['base', 'product', 'rentaltype', 'mail', 'sale'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/sales_id.xml',
         'views/task_views.xml',
+        'views/sales_id.xml',
+        'views/setting.xml',
         'rental_type/rentaltype.xml',
         'views/product.xml',
         'views/templates.xml',
+        'report/paperform.xml',
+        'report/card.xml',
+        'report/report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

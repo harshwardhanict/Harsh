@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','library'],
 
     # always loaded
     'data': [
@@ -34,5 +34,5 @@
         'demo/demo.xml',
     ],
     "license": "LGPL-3",
-    "application":True
+    "application": True
 }

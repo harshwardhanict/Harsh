@@ -139,10 +139,6 @@
                             </page>
                         </notebook>
                     </sheet>
-'''Q1) the chatter functionality in module.
-                    by using class method of oe_chatter,
-                    three main fields and inherit of mail module form base.
-                    '''
                     <div class='oe_chatter'>
                         <field name="message_follower_ids"/>
                         <field name="activity_ids"/>

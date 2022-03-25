@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <record model="ir.ui.view" id="sale_form_ta">
+        <record model="ir.ui.view" id="sale_form_inherit">
             <field name="name">inherit form</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
@@ -11,7 +11,9 @@
                     <field name="today_date"/>
                     <field name="birth_date"/>
                     <field name="age"/>
-                    <button name="search_data" string="Add" type="object" class="btn-success" />
+                    <field name="count"/>
+                    <button name="%(task_wiz_window)d" string="Link" type="action" class="btn-success"/>
+                    <button name="r" string="Read" type="object" class="btn-success"/>
                 </field>
             </field>
         </record>

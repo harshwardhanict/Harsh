@@ -11,11 +11,19 @@ class product_product(models.Model):
     age = fields.Integer(string="Age", compute="_compute_age")
     birth_date = fields.Date(string="Birth Date", default=date.today())
     today_date = fields.Date(default=date.today())
+    count = fields.Integer(compute='search_count_na')
 
-    def search_data(self):
-        res = self.env['sale.order'].read(['email'])
-        print(res, "---------------------------------")
-        return res
+
+    def search_count_na(self):
+        for res in self:
+            res = self.env['sale.order'].search_count([])
+            self.count = res
+
+    def r(self):
+        res = self.env['sale.order'].browse([self.env.context.get('active_id')])
+        abc = res.read(['partner_id'])
+        print(res, "---------------------------------", abc)
+        return res, abc
 
     @api.depends("birth_date", "today_date")
     def _compute_age(self):
@@ -24,22 +32,23 @@ class product_product(models.Model):
         else:
             self.age = 0
 
-    # @api.onchange('partner_id')
-    # def onchange_partner_id(self):
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        for rec in self:
+            rec.email = rec.partner_id.email
+            rec.mobile = rec.partner_id.phone
+
+    # def action_confirm(self):
     #     for rec in self:
-    #         rec.email = rec.partner_id.email
-    #         rec.mobile = rec.partner_id.phone
+    #         if len(rec.order_line) > 3:
+    #             raise UserError('Just Three Order line only')
 
-    def action_confirm(self):
-        for rec in self:
-            if len(rec.order_line) > 3:
-                raise UserError('Just Three Order line only')
-
-    @api.constrains('payment_term_id', 'partner_id')
-    def _check_payment_term(self):
-        for rec in self:
-            if rec.payment_term_id.name != rec.partner_id.property_supplier_payment_term_id.name:
-                raise UserError('Payment Terms do not match!')
+    # @api.constrains('payment_term_id', 'partner_id')
+    # def _check_payment_term(self):
+    #     for rec in self:
+    #         if rec.payment_term_id.name != rec.partner_id.property_supplier_payment_term_id.name:
+    #             raise UserError('Payment Terms do not match!')
 
     @api.model
     def _name_search(self, name, args=None, operator='=', limit=100, name_get_uid=None):
@@ -49,3 +58,5 @@ class product_product(models.Model):
             domain = ['|', ('email', operator, name), ('phone', operator, name)]
 
         return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)
+
+

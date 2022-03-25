@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form>
                     <group>
-                        <field name="customer"/>
+                        <field name="customer" context="{'name_phone':'customer'}"/>
                         <field name="customer_email"/>
                         <field name="sales_person"/>
                         <field name="sales_person_contact"/>
