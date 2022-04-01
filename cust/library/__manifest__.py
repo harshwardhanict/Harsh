@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','mail','station'],
+    'depends': ['base', 'mail', 'station'],
 
     # always loaded
     'data': [
@@ -31,6 +31,6 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
-    ] ,'license':'LGPL-3'
-    ,'application':True
+    ], 'license': 'LGPL-3'
+    , 'application': True
 }

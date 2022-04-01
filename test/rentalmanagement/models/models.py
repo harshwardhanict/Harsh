@@ -19,7 +19,14 @@ class RentalManagement(models.Model):
     price = fields.Float(string="Price")
     state = fields.Selection([("draft", "Draft"), ("waiting", "Waiting"), ("approve", "Approve"), ("cancle", "Cancle")])
     rental_info = fields.One2many('rental_person','person',string="Info")
-    note = fields.Html()
+    confi = fields.Boolean(string="")
+
+
+    def confirm_mess(self):
+        pass
+    # def action_confirm(self):
+    #         if True:
+    #             raise UserError('The Below Details are all Correct')
 
     def name_get(self):
         result = []
@@ -35,19 +42,6 @@ class RentalManagement(models.Model):
         display_msg = str(self.name)
         return self.message_post(body=display_msg)
 
-    # @api.model
-    # def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
-    #     """
-    #     this is method is for
-    #     search with customer email,name and phone number
-    #     """
-    #     args = args or []
-    #     domain = []
-    #     print("insideeeeeeeeeeeeeeeeeeeeeeeeeee", self._context)
-    #     if self._context.get('harsh'):
-    #         cl = self.env['rental_management'].browse(self._context.get('harsh'))
-    #         domain += [('id', 'in', cl.rental_management.ids)]
-    #     return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)
 
 
 

@@ -78,7 +78,7 @@
                   action="station_action_window"/>
         <menuitem name="Server to list" id="station" parent="station_menu_2"
                   action="station_action_server"/>
-        <menuitem name="Check" id="station_wiz_menu" parent="station_menu_2"
-                  action="station_wiz_action_window"/>
+        <menuitem name="Check" id="station_wiz_menu" parent="station_menu_root"
+                  action="station_wiz_action_win"/>
     </data>
 </odoo>

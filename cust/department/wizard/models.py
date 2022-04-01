@@ -8,11 +8,11 @@ class department_wizard(models.Model):
     _description = 'department_wiz'
 
     name = fields.Char(string='Name')
-    enroll = fields.Integer(string='Enroll')
+    fee_id = fields.Char(string='Fee')
     user_id = fields.Many2many('res.partner.category', string='Users')
 
-    def Print(self):
-        print("Details are ADD")
+    @api.model
+    def Create_H(self, vals):
+        res = self.env['department_department'].create(vals)
+        return res
 
-    # def add_more(self):
-    #     print("The More Details are ADD ")

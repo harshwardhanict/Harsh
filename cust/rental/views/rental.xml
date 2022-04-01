@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="rental_list">
+            <field name="name">rental list</field>
+            <field name="model">rental_type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                </form>
+            </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="rental_type_action">
+            <field name="name">RentalType window</field>
+            <field name="res_model">rental_type</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

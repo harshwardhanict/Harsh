@@ -14,3 +14,10 @@ class name_ref(models.Model):
                     res.append((rec.id, f"{rec.name}"))
             return res
         return super(name_ref, self).name_get()
+
+
+
+
+
+
+

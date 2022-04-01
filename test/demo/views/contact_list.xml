@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="contacts_list" name="Contacts List">
+        <t t-call="website.layout">
+        <t t-foreach="contact" t-as="S">
+            <table>
+
+
+
+            </table>
+        </t>
+        </t>
+        <!--        <h1>Hello</h1>-->
+    </template>
+</odoo>
+
+

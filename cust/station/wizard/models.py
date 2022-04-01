@@ -10,5 +10,4 @@ class station_wizard(models.TransientModel):
     ticket_no = fields.Char(string="Ticket No")
 
 
-    # def print(self):
-    #     print("hai")
+

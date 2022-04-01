@@ -12,8 +12,6 @@
                     <field name="birth_date"/>
                     <field name="age"/>
                     <field name="count"/>
-                    <button name="%(task_wiz_window)d" string="Link" type="action" class="btn-success"/>
-                    <button name="r" string="Read" type="object" class="btn-success"/>
                 </field>
             </field>
         </record>

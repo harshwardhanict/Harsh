@@ -13,6 +13,33 @@ class product_product(models.Model):
     today_date = fields.Date(default=date.today())
     count = fields.Integer(compute='search_count_na')
 
+    # def write(self, vals):
+    #     if self.customer_rank >= 5:
+    #         vals.update({
+    #                  'customer_rank': 'Harsh'
+    #              })
+    #         res = super().write(vals)
+    #         return res
+
+    @api.model
+    def create(self, vals):
+        res = super(product_product, self).create(vals)
+        if res.partner_id.customer_rank > 5:
+            best_cat = self.env.ref("rentalmanagement.res_partner_category_best").id
+            # print ("????????????", best_categ_id)
+            res.partner_id.write(
+                {'category_id': [(4, best_cat)]})  # 4 - Link, best_categ_id - id of Best Customer tag
+        return res
+
+# @api.model
+    # def create(self, vals):
+    #     res = super(product_product, self).create(vals)
+    #     if res.partner_id.customer_rank > 5:
+    #         res.partner_id.write(
+    #             {'category_id': [(4, 8)]}
+    #         )
+    #     return res
+
 
     def search_count_na(self):
         for res in self:

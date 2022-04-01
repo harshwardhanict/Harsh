@@ -14,6 +14,7 @@
                     <field name="star"/>
                     <field name="gender"/>
                     <field name="books"/>
+                    <field name="date"/>
                 </tree>
             </field>
         </record>
@@ -55,7 +56,8 @@
                                     <ul>
                                         <li>
                                             Name:
-                                            <field name="name" placeholder='name'/>
+                                            <field name="name" placeholder='name'
+                                                   options="{'invisible': [('name','!=',True)]}"/>
                                         </li>
                                         <li>
                                             Value:
@@ -66,6 +68,10 @@
                                         </li>
                                         <li>
                                             <field name="gender" widget="radio" options="{'horizontal':1}"/>
+                                        </li>
+                                        <li>
+                                            Date Time:
+                                            <field name="date"/>
                                         </li>
                                         <li>
                                             Power Level:
@@ -91,15 +97,15 @@
                     <header>
                         <field name="stat" widget="statusbar" options="{'clickable':'2'}"
                                statusbar_visible="application,confirm"/>
-
                     </header>
                     <sheet>
                         <group>
-                            <field name="name"/>
+                            <field name="name" placeholder="Harsh"/>
                             <field name="value"/>
                             <field name="image" widget="image"/>
                             <field name="star" widget="priority"/>
                             <field name="gender" widget="radio" options="{'horizontal':1}"/>
+                            <field name="date"/>
                         </group>
                         <notebook>
                             <page string="Books Details">
@@ -108,6 +114,7 @@
                                         <field name="books_name"/>
                                         <field name="quantity"/>
                                         <field name="Mrp"/>
+                                        <field name="add"/>
                                     </tree>
                                 </field>
                             </page>
@@ -132,6 +139,10 @@
                             </page>
                         </notebook>
                     </sheet>
+'''Q1) the chatter functionality in module.
+                    by using class method of oe_chatter,
+                    three main fields and inherit of mail module form base.
+                    '''
                     <div class='oe_chatter'>
                         <field name="message_follower_ids"/>
                         <field name="activity_ids"/>
@@ -149,7 +160,6 @@
             <field name="view_mode">tree,form,kanban</field>
             <field name="context">{'search_default_group_gender':1}</field>
         </record>
-
 
 
         <menuitem name="Library" id="library_menu_root"/>

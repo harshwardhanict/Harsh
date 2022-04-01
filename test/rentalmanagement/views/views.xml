@@ -16,7 +16,7 @@
                     <field name="rental_product"/>
                     <field name="price"/>
                     <field name="state"/>
-                    <field name="note" widget="html"/>
+                    <field name="confi"/>
                 </tree>
             </field>
         </record>
@@ -42,6 +42,11 @@
             <field name="model">rental_management</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="confirm_mess" string="Confirm" type="object"
+                                class="btn btn-primary" attrs="{'invisible':[('confi', '=', False)]}" confirm="The Below Details are all Correct
+"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -53,17 +58,19 @@
                             <field name="rental_product" domain="[('is_rental','=',True)]"/>
                             <field name="price"/>
                             <field name="state"/>
-                            <field name="note"/>
                         </group>
-                        <group>
-                            <button name="click_by_name" id="click_by_name" string="Click" type="object"
-                                    class="btn btn-success" attrs="{'invisible':[('state', '!=', 'approve')]}"/>
-                        </group>
+                        <!--                        <group>-->
+                        <!--                            <button name="click_by_name" id="click_by_name" string="Click" type="object"-->
+                        <!--                                    class="btn btn-success"/>-->
+                        <!--                        </group>-->
+                    </sheet>
+                    <field name="confi" nolabel="1"/>
+                    <sheet>
                         <notebook>
                             <page string="Information">
                                 <field name="rental_info">
-                                    <tree >
-                                        <field name="p_name" context ="{'default_name_id':active_id}"/>
+                                    <tree>
+                                        <field name="p_name" context="{'default_name_id':active_id}"/>
                                         <field name="job"/>
                                     </tree>
                                 </field>

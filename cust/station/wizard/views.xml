@@ -13,7 +13,7 @@
                         <field name="ticket_no"/>
                     </group>
                     <footer>
-                        <button name="%(department.department_action_window)d" string="Search" type="action"
+                        <button name="%(department.department_action_window)d" string="Add" type="action"
                                 class="btn-primary" data-hotkey="z"/>
                     </footer>
                 </form>
@@ -22,7 +22,7 @@
 
 
         <!-- actions opening views on models -->
-        <record model="ir.actions.act_window" id="station_wiz_action_window">
+        <record model="ir.actions.act_window" id="station_wiz_action_win">
             <field name="name">station window</field>
             <field name="res_model">station_wiz</field>
             <field name="view_mode">form</field>
